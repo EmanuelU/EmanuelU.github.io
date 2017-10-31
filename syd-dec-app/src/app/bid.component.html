@@ -1,0 +1,30 @@
+<div *ngIf="expandAll">
+	<div [ngClass]="getClass()">
+		<span class="parentBid" *ngFor="let parentBid of getParentBidSequence()">
+			{{parentBid.level}}
+			<suit [suit]=parentBid.suit></suit>-
+		</span>
+	    <span class="bid">{{bid.level}}<suit [suit]=bid.suit></suit></span> 
+	    <span class="badge badge-light">{{bid.des}}</span>
+	    <a class="badge badge-primary" href="#{{bid.mod}}" data-toggle="modal" data-target="#{{bid.mod}}">{{bid.mod}}</a>
+	    <span *ngIf="bid.forcing" class="badge badge-danger">F</span>
+	</div>
+	<div [id]=bid.id><bid [bid]="bidOption" [expandAll]="true" *ngFor="let bidOption of bid.options"></bid></div>
+</div>
+<div *ngIf="!expandAll">
+	<div [ngClass]="getClass()"
+		data-toggle="collapse"
+		aria-expanded="false"
+		[attr.href]="'#'+bid.id"
+		[attr.aria-controls]="bid.id">
+		<span class="parentBid" *ngFor="let parentBid of getParentBidSequence()">
+			{{parentBid.level}}
+			<suit [suit]=parentBid.suit></suit>-
+		</span>
+	    <span class="bid">{{bid.level}}<suit [suit]=bid.suit></suit></span> 
+	    <span class="badge badge-light">{{bid.des}}</span>
+	    <a class="badge badge-primary" href="#{{bid.mod}}" data-toggle="modal" data-target="#{{bid.mod}}">{{bid.mod}}</a>
+	    <span *ngIf="bid.forcing" class="badge badge-danger">F</span>
+	</div>
+	<div class="collapse" [id]=bid.id><bid [bid]="bidOption" *ngFor="let bidOption of bid.options"></bid></div>
+</div>

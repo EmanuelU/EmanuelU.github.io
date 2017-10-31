@@ -1,0 +1,16 @@
+.spades {
+    font-weight: bold;
+    color: black;
+}
+.hearts {
+    font-weight: bold;
+    color: red;
+}
+.diamonds {
+    font-weight: bold;
+    color: orange;
+}
+.clubs {
+    font-weight: bold;
+    color: green;
+}
